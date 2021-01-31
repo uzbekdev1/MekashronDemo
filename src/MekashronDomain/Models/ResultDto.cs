@@ -7,6 +7,7 @@ namespace MekashronDomain.Models
 
     public class ResultDto
     {
+
         public int ResultCode { get; set; }
 
         public string ResultMessage { get; set; }

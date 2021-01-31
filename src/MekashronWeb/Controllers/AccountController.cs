@@ -9,16 +9,19 @@ using MekashronDomain.Services;
 using MekashronWeb.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Logging;
 
 namespace MekashronWeb.Controllers
 {
     public class AccountController : Controller
     {
         private readonly AccountService _service;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(AccountService service)
+        public AccountController(AccountService service, ILogger<AccountController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         public IActionResult Login()
@@ -46,6 +49,8 @@ namespace MekashronWeb.Controllers
 
             if (!entity.IsSuccess)
             {
+                _logger.LogError(entity.ErrorMessage);
+
                 ModelState.AddModelError("", entity.ErrorMessage);
 
                 return View(model);
@@ -65,8 +70,8 @@ namespace MekashronWeb.Controllers
                 new Claim(ClaimTypes.PostalCode, entity.ResultData.Zip),
                 new Claim(ClaimTypes.Locality, entity.ResultData.Company),
             };
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); 
-          
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
             return RedirectToAction("Info", "Cabinet");

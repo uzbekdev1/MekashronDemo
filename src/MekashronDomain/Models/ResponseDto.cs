@@ -1,11 +1,9 @@
 ﻿namespace MekashronDomain.Models
 {
-    public class ResponseDto<T> : ResultDto where T : class
+    public class ResponseDto<T> where T : class
     {
 
         public bool IsSuccess { get; set; }
-
-        public int ErrorCode { get; set; }
 
         public string ErrorMessage { get; set; }
 

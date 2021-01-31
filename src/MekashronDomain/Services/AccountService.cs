@@ -28,7 +28,6 @@ namespace MekashronDomain.Services
 
                 if (string.IsNullOrWhiteSpace(response.@return))
                 {
-                    result.ErrorCode = 500;
                     result.ErrorMessage = "Internal Server Error";
                 }
                 else
@@ -37,7 +36,6 @@ namespace MekashronDomain.Services
                     {
                         var errorResult = JsonConvert.DeserializeObject<ResultDto>(response.@return);
 
-                        result.ErrorCode = errorResult.ResultCode;
                         result.ErrorMessage = errorResult.ResultMessage;
                     }
                     else
@@ -55,8 +53,7 @@ namespace MekashronDomain.Services
             {
                 return new ResponseDto<EntityResponse>
                 {
-                    ErrorMessage = exception.Message,
-                    ErrorCode = -1
+                    ErrorMessage = exception.Message 
                 };
             }
         }

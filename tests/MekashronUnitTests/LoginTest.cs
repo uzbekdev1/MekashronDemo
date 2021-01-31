@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
 using MekashronDomain.Models;
@@ -27,19 +28,16 @@ namespace MekashronUnitTests
             };
 
             // Act 
-            var item = await _service.Login(request);
+            var response = await _service.Login(request);
 
             // Assert
-            Assert.IsTrue(item.IsSuccess);
-            Assert.AreEqual(item.ResultData.Email, request.UserName);
+            Assert.IsTrue(response.IsSuccess);
+            Assert.AreEqual(response.ResultData.Email, request.UserName);
         }
 
         [TestMethod]
-        [DataRow("elyor.dev@gmail.com", "web@1234")]
-        [DataRow("elyor.dev@gmail.com", "web@1234")]
-        [DataRow("elyor.dev@gmail.com", "web@1234")]
-        [DataRow("elyor.dev@gmail.com", "web@1234")]
-        public async Task Bulk_Data_Testing(string userName,string password)
+        [DataRow("elyor@outlook.com", "web@1234")]
+        public async Task Error_Data_Testing(string userName, string password)
         {
             // Arrange
             var request = new LoginRequest
@@ -49,11 +47,15 @@ namespace MekashronUnitTests
             };
 
             // Act 
-            var item = await _service.Login(request);
+            var response = await _service.Login(request);
 
             // Assert
-            Assert.IsTrue(item.IsSuccess);
-            Assert.AreEqual(item.ResultData.Email, request.UserName);
+            Assert.IsFalse(response.IsSuccess);
+            Assert.IsNotNull(response.ErrorMessage);
+
+            #if DEBUG
+                    Trace.WriteLine(response.ErrorMessage);
+            #endif
         }
     }
 }
