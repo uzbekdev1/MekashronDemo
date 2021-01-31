@@ -1,17 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using MekashronDomain.Models;
 using Newtonsoft.Json;
-using ServiceReference1;
-using LoginRequest = MekashronDomain.Models.LoginRequest;
+using ServiceReference1; 
 
 namespace MekashronDomain.Services
 {
+    /// <summary>
+    /// Account service
+    /// </summary>
     public class AccountService
     {
-
+        /// <summary>
+        /// SOAP instance
+        /// </summary>
         private readonly ICUTechClient _client;
 
         public AccountService()
@@ -19,7 +21,12 @@ namespace MekashronDomain.Services
             _client = new ICUTechClient();
         }
 
-        public async Task<ResponseDto<EntityResponse>> Login(LoginRequest request)
+        /// <summary>
+        /// Login request
+        /// </summary>
+        /// <param name="request">Customer entity</param>
+        /// <returns></returns>
+        public async Task<ResponseDto<EntityResponse>> Login(Models.LoginRequest request)
         {
             try
             {

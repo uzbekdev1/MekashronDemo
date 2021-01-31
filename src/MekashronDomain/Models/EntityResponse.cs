@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace MekashronDomain.Models
 {
+    /// <summary>
+    /// Customer entity
+    /// </summary>
     public class EntityResponse
     {
 

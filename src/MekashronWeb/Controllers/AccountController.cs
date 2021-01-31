@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using MekashronDomain.Models;
@@ -15,6 +13,7 @@ namespace MekashronWeb.Controllers
 {
     public class AccountController : Controller
     {
+
         private readonly AccountService _service;
         private readonly ILogger<AccountController> _logger;
 

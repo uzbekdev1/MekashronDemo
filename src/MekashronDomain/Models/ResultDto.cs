@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MekashronDomain.Models
+﻿namespace MekashronDomain.Models
 {
 
+    /// <summary>
+    /// Result handling
+    /// </summary>
     public class ResultDto
     {
 

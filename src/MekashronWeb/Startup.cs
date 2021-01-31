@@ -4,9 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MekashronDomain.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -57,6 +54,7 @@ namespace MekashronWeb
             app.UseRouting();
 
             app.UseAuthorization();
+
             app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>

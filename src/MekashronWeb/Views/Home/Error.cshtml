@@ -1,0 +1,15 @@
+﻿@model MekashronWeb.ViewModels.ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (string.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
+    <p class="text-danger">An error occurred while processing your request.</p>
+}
+else
+{
+    <p class="text-danger">@Model.ErrorMessage</p>
+}

@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Globalization;
 using System.Threading.Tasks;
 using MekashronDomain.Models;
 using MekashronDomain.Services;
@@ -7,6 +6,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MekashronUnitTests
 {
+    /// <summary>
+    /// Login functions
+    /// </summary>
     [TestClass]
     public class LoginTest
     {

@@ -1,26 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using MekashronWeb.ViewModels;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace MekashronWeb.Controllers
 {
     public class HomeController : Controller
     {
-       
+
         public IActionResult Index()
         {
             return View();
         }
-         
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var pathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            return View(new ErrorViewModel
+            {
+                ErrorMessage = pathFeature.Error?.InnerException?.Message ??
+                               pathFeature.Error?.Message
+            });
         }
     }
 }
