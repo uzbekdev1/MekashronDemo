@@ -1,0 +1,57 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+@section Styles{
+    <style>
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+            .form-signin .checkbox {
+                font-weight: 400;
+            }
+
+            .form-signin .form-control {
+                position: relative;
+                box-sizing: border-box;
+                height: auto;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+                .form-signin .form-control:focus {
+                    z-index: 2;
+                }
+
+            .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                -ms-border-bottom-right-radius: 0;
+                border-bottom-right-radius: 0;
+                -ms-border-bottom-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                -ms-border-top-left-radius: 0;
+                border-top-left-radius: 0;
+                -ms-border-top-right-radius: 0;
+                border-top-right-radius: 0;
+            }
+    </style>
+}
+
+<div class="text-center">
+    <form class="form-signin" asp-action="Login" asp-antiforgery="true">
+        <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="email" asp-for="UserName" class="form-control" placeholder="Username" required autofocus>
+        <input type="password" asp-for="Password" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>
+</div>

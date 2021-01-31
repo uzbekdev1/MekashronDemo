@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Cabinet Page";
+}
+<h2>
+    Personal info
+</h2>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">Name: @User.FindFirstValue(ClaimTypes.GivenName) </li>
+    <li class="list-group-item">Phone: @User.FindFirstValue(ClaimTypes.MobilePhone) </li>
+    <li class="list-group-item">Country: @User.FindFirstValue(ClaimTypes.Country) </li>
+    <li class="list-group-item">City: @User.FindFirstValue(ClaimTypes.StateOrProvince) </li>
+    <li class="list-group-item">Address: @User.FindFirstValue(ClaimTypes.StreetAddress) </li>
+    <li class="list-group-item">Company: @User.FindFirstValue(ClaimTypes.Locality) </li>
+</ul>
